@@ -37,7 +37,7 @@ class SpiderRunner(scrapy.spiders.Spider):
             address_code = matchURL.group(1)
             print "address code is : " , address_code
             print "--------------start analysis--------------"
-            src = se.xpath("//div[@class='tian_three']/ul") #匹配到ul下的所有小li
+            src = se.xpath("//div[@class='tian_three']/ul")
             address = se.xpath("//div[@class='flex']/h3//text()").extract()
 
             print "address is: ",address
@@ -61,7 +61,7 @@ class SpiderRunner(scrapy.spiders.Spider):
                 print dateWeater
                 print "=======-------"
                 if j >= 0:
-                    item=WebcrawlerScrapyItem()  #实例item（具体定义的item类）,将要保存的值放到事先声明的item属性中
+                    item=WebcrawlerScrapyItem()
                     item['date']=dateWeater[0]
                     item['max_tempe'] = dateWeater[1]
                     item['min_tempe'] = dateWeater[2]
@@ -73,7 +73,7 @@ class SpiderRunner(scrapy.spiders.Spider):
                     print item
                     yield item  #返回item,这时会自定解析item
 
-                    #urllib.urlretrieve(realUrl,path)  #接收文件路径和需要保存的路径，会自动去文件路径下载并保存到我们指定的本地路径
+                    #urllib.urlretrieve(realUrl,path)
 
 
         all_urls = se.xpath("//a/@href").extract()  # 提取界面所有的url

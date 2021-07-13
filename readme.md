@@ -1,5 +1,4 @@
-scrapy爬虫框架模板
-=====
+## scrapy-tianqi
 
 
 ## settings.py
@@ -7,9 +6,9 @@ scrapy爬虫框架模板
 ``` stylus
 #Mysql数据库的配置信息
 MYSQL_HOST = '127.0.0.1'
-MYSQL_DBNAME = 'testdb'         #数据库名字，请修改
+MYSQL_DBNAME = 'weather'         #数据库名字，请修改
 MYSQL_USER = 'root'             #数据库账号，请修改 
-MYSQL_PASSWD = '123456'         #数据库密码，请修改
+MYSQL_PASSWD = 'root'         #数据库密码，请修改
 
 MYSQL_PORT = 3306               #数据库端口，在dbhelper中使用
 ```
@@ -176,17 +175,18 @@ class JsonWithEncodingPipeline(object):
 ```
  - 还有一些数据库操作方法传入sql语句和参数即可（具体看代码）
 
-## 实现具体的爬虫.py（即模板中的`pictureSpider_demo.py`文件）
+## 实现具体的爬虫.py（即模板中的`SpiderRunner.py`文件）
  - 继承`scrapy.spiders.Spider` 类
  - 声明三个属性
  
 
 ``` stylus
-    name="webCrawler_scrapy"    #定义爬虫名，要和settings中的BOT_NAME属性对应的值一致
+    name="webCrawler_scrapy" #定义爬虫名，要和settings中的BOT_NAME属性对应的值一致
     
-    allowed_domains=["desk.zol.com.cn"] #搜索的域名范围，也就是爬虫的约束区域，规定爬虫只爬取这个域名下的网页
+    allowed_domains=["lishi.tianqi.com"] #搜索的域名范围，也就是爬虫的约束区域，规定爬虫只爬取这个域名下的网页
     
-    start_urls=["http://desk.zol.com.cn/fengjing/1920x1080/1.html"]   #开始爬取的地址
+    start_urls=["https://lishi.tianqi.com/"] #开始爬取的地址
+
 ```
  - 实现`parse`方法，该函数名不能改变，因为Scrapy源码中默认callback函数的函数名就是parse
  
@@ -206,10 +206,16 @@ class JsonWithEncodingPipeline(object):
     yield item  #返回item,这时会自定解析item
 ```
 
-## 测试
- - 测试DBHelper
- python dbhelper.py
+#### 测试
 
- `scrapy crawl webCrawler_scrapy` 
+- 测试DBHelper
+
+```
+ python dbhelper.py
+```
+- 运行
+```
+ scrapy crawl webCrawler_scrapy
+``` 
 
 
