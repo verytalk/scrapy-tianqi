@@ -215,6 +215,7 @@ class JsonWithEncodingPipeline(object):
 ```
 - 运行
 ```
+ pip install scrapy
  scrapy crawl webCrawler_scrapy
 ``` 
 
