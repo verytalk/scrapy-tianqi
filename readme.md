@@ -1,5 +1,8 @@
 ## scrapy-tianqi
 
+```
+使用 scrapy 抓取历史天气并保存到MySQL数据库中
+```
 
 ## settings.py
  - 修改Mysql的配置信息
