@@ -83,10 +83,7 @@ class WebcrawlerScrapyItem(scrapy.Item):
 ``` stylus
     #写入数据库中
     def _conditional_insert(self,tx,item):
-        #print item['name']
-        sql="insert into testpictures(name,url) values(%s,%s)"
-        params=(item["name"],item["url"])
-        tx.execute(sql,params)
+     
 ```
  - 错误处理方法`_handle_error`
  
